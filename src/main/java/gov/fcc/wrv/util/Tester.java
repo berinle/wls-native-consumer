@@ -21,6 +21,8 @@ public class Tester {
 			port.sendTestEvent(event);
 			System.out.println(" done with sendTestEvent() ");
 		
+			event.setEventType("ANNPOST");
+			event.setEventSender("BIDDING");
 			port.sendEvent(event);
 			
 			System.out.println(" done with sendEvent() ");
