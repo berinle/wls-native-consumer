@@ -1,0 +1,51 @@
+<project name="toygen" default="gc" basedir=".">
+	
+	<property file="build.properties"/>
+	
+	<path id="cp">		
+		<fileset dir="${bea.home}/weblogic92/server/lib">
+			<include name="weblogic.jar"/>
+		</fileset>
+	</path>
+	
+	<path id="runcp">
+		<path refid="cp"/>
+		<fileset dir="${bea.home}/weblogic92/server/lib">
+			<include name="*.jar"/>
+		</fileset>
+		<pathelement location="build/classes"/>
+		<pathelement location="src/main/java"/>
+	</path>
+	
+	<taskdef name="clientgen"
+	      classname="weblogic.wsee.tools.anttasks.ClientGenTask" 
+			classpathref="cp"/>
+	
+	<target name="gc">
+		<clientgen wsdl="${wsdl.location}"
+			destDir="src/main/java"
+			packageName="gov.fcc.wrv.model.xsd"
+			serviceName="BiddingDashboardService"
+			overwrite="true"
+			classpathref="cp"/>
+	</target>
+	
+	<target name="compile">
+		<javac srcdir="src/main/java"
+			destdir="build/classes"
+			debug="true"
+			executable="${jdk15}"
+			fork="true"
+			classpathref="cp"/>
+	</target>
+	
+	<target name="clean">
+		<delete dir="build"/>
+	</target>
+	
+	<target name="run" depends="compile">
+		<java classname="gov.fcc.wrv.model.util.Tester"
+			classpathref="runcp"/>
+	</target>
+	
+</project>

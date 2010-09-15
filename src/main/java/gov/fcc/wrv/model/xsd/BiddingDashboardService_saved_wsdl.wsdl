@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="" targetNamespace="http://webservice.wrv.fcc.gov" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:s0="http://webservice.wrv.fcc.gov" xmlns:s1="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://model.wrv.fcc.gov" xmlns:ns1="http://model.wrv.fcc.gov" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:tns="http://webservice.wrv.fcc.gov" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:complexType name="WrvEvent">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="auctionId" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="bidInfo" nillable="true" type="ns1:BidInfo"/>
+          <xsd:element minOccurs="0" name="bidderInfo" nillable="true" type="ns1:BidderInfo"/>
+          <xsd:element minOccurs="0" name="currentRound" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="eligWaiverInfo" nillable="true" type="ns1:EligWavierInfo"/>
+          <xsd:element minOccurs="0" name="eventDesc" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="eventSender" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="eventType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="processInfo" nillable="true" type="ns1:ProcessInfo"/>
+          <xsd:element minOccurs="0" name="status" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="statusDesc" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="timeStamp" type="xsd:dateTime"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="BidInfo">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="amount" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="bipDesc" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="bipName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="numBids" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ProcessInfo">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="changedParams" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="changedValue" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="EligWavierInfo">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="currentElig" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="eligReduced" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="initialElig" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="numWaivers" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="openElig" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="rmngWaivers" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="BidderInfo">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="bidderId" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="frn" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="name" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://webservice.wrv.fcc.gov" xmlns:ns1="http://model.wrv.fcc.gov" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:tns="http://webservice.wrv.fcc.gov" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="sendTestEvent">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="ns1:WrvEvent"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sendTestEventResponse">
+        <xsd:complexType/>
+      </xsd:element>
+      <xsd:element name="sendEvent">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="ns1:WrvEvent"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sendEventResponse">
+        <xsd:complexType/>
+      </xsd:element>
+      <xsd:element name="verifyWS">
+        <xsd:complexType/>
+      </xsd:element>
+      <xsd:element name="verifyWSResponse">
+        <xsd:complexType/>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="verifyWSResponse">
+    <part element="s0:verifyWSResponse" name="parameters"/>
+  </message>
+  <message name="sendTestEventResponse">
+    <part element="s0:sendTestEventResponse" name="parameters"/>
+  </message>
+  <message name="verifyWSRequest">
+    <part element="s0:verifyWS" name="parameters"/>
+  </message>
+  <message name="sendEventResponse">
+    <part element="s0:sendEventResponse" name="parameters"/>
+  </message>
+  <message name="sendEventRequest">
+    <part element="s0:sendEvent" name="parameters"/>
+  </message>
+  <message name="sendTestEventRequest">
+    <part element="s0:sendTestEvent" name="parameters"/>
+  </message>
+  <portType name="BiddingDashboardServicePortType">
+    <operation name="sendTestEvent">
+      <input message="s0:sendTestEventRequest"/>
+      <output message="s0:sendTestEventResponse"/>
+    </operation>
+    <operation name="sendEvent">
+      <input message="s0:sendEventRequest"/>
+      <output message="s0:sendEventResponse"/>
+    </operation>
+    <operation name="verifyWS">
+      <input message="s0:verifyWSRequest"/>
+      <output message="s0:verifyWSResponse"/>
+    </operation>
+  </portType>
+  <binding name="BiddingDashboardServiceHttpBinding" type="s0:BiddingDashboardServicePortType">
+    <s1:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="sendTestEvent">
+      <s1:operation soapAction=""/>
+      <input>
+        <s1:body use="literal"/>
+      </input>
+      <output>
+        <s1:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="sendEvent">
+      <s1:operation soapAction=""/>
+      <input>
+        <s1:body use="literal"/>
+      </input>
+      <output>
+        <s1:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="verifyWS">
+      <s1:operation soapAction=""/>
+      <input>
+        <s1:body use="literal"/>
+      </input>
+      <output>
+        <s1:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="BiddingDashboardService">
+    <port binding="s0:BiddingDashboardServiceHttpBinding" name="BiddingDashboardServiceHttpPort">
+      <s1:address location="http://localhost:7777/wrv/services/DashboardService"/>
+    </port>
+  </service>
+</definitions>
